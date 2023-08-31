@@ -22,37 +22,38 @@ const loadCards = async (id) => {
   for (const i of data) {
     console.log(i.authors[0]);
     document.getElementById("cardsContainer").innerHTML += `
-      <div><!-- card -->
-      <div class="flex justify-center items-center relative">
-      <figure class="max-w-[312px] max-h-[200px]">
-          <img src="${i.thumbnail}" alt="" class="rounded-lg w-[312px] h-[200px]">
-      </figure>
-      <p class="absolute bg-slate-900 text-white px-2 rounded bottom-2 right-2">3hrs 56 min ago</p>
-  </div>
-                <div class="flex gap-3 mt-5 justify-center">
-                    <div class="max-w-[312px] max-h-[200px] flex gap-3">
-                    <div class="w-[70px] h-[50px] ">
-                    <img src="./f7c8a8ca2f16c4cbfd746902cb0f8d57.jpeg" alt=""
-                        class="w-[100%] h-[80%] rounded-[50%]">
+    <div><!-- card -->
+        <div class="flex justify-center items-center relative">
+            <figure class="max-w-[312px] max-h-[200px]">
+                <img src="${i.thumbnail}" alt="" class="rounded-lg w-[312px] h-[200px]">
+            </figure>
+            <p class="absolute bg-slate-900 text-white px-2 rounded bottom-2 right-2">3hrs 56 min ago</p>
+        </div>
+        <div class="flex gap-3 mt-5 justify-start">
+            <div class="flex gap-3">
+                <div class="max-w-[70px] max-h-[50px] ">
+                    <img src="${i.authors[0].profile_picture}" alt=""
+                        class="w-[40px] h-[40px] rounded-[50%]">
                 </div>
-                        <div>
-                            <h3 class="font-bold text-black">Building a Winning UX Strategy Using the Kano Model</h3>
-                            <div class="flex items-center">
-                                <h4 class="py-2">
-                                    Author Name</h4>
-                                <h4 class="text-blue-500 ml-3 text-xl relative">
-                                    <i class="fa-solid fa-certificate"></i>
-                                    <i
-                                        class="fa-solid fa-check absolute text-[10px] text-white top-[11px] right-[6px]"></i>
-                                </h4>
-                            </div>
-                            <h4 class="">
-                                91K views
-                            </h4>
-                        </div>
+                <div>
+                    <h3 class="font-bold text-black">
+                        ${i.title}
+                    </h3>
+                    <div class="flex items-center">
+                        <h4 class="py-2">
+                        ${i.authors[0].profile_name}</h4>
+                        <h4 class="text-blue-500 ml-3 text-xl relative">
+                            <i class="fa-solid fa-certificate"></i>
+                            <i class="fa-solid fa-check absolute text-[10px] text-white top-[11px] right-[6px]"></i>
+                        </h4>
                     </div>
+                    <h4 class="">
+                    ${i.others.views} views
+                    </h4>
                 </div>
-            </div><!-- card end -->
+            </div>
+        </div>
+    </div><!-- card end -->
       `;
   }
 };
