@@ -21,17 +21,36 @@ const loadCards = async (id) => {
   const data = json.data;
   for (const i of data) {
     let v = "hidden";
+    let t = "hidden";
+    let time = 0;
+
     if (i.authors[0].verified) {
       v = "";
     }
+    if (i.others.posted_date) {
+      t = "";
+      let giventime = parseFloat(i.others.posted_date);
+      let hours = Math.floor(parseFloat(giventime) / 3600);
+      let rem = parseFloat(giventime) % 3600;
+      let minutes = Math.floor(parseFloat(rem) / 60);
+
+      time = hours + " hrs " + minutes + " min ago";
+    }
     console.log(i.authors[0]);
     document.getElementById("cardsContainer").innerHTML += `
-    <div><!-- card -->
-        <div class="flex justify-center items-center relative">
-            <figure class="max-w-[312px] max-h-[200px]">
+    <div class="flex flex-col max-w-[312px] m-auto"><!-- card -->
+        <div class="flex justify-center items-center ">
+            <figure class="max-w-[312px] max-h-[200px] relative">
                 <img src="${i.thumbnail}" alt="" class="rounded-lg w-[312px] h-[200px]">
+                <div class = "absolute bottom-2 right-2">
+                  <div class=${t}>
+                    <p class="bg-slate-900 text-white px-2 rounded">
+                      ${time}
+                     </p>
+                  </div>
+              </div>
             </figure>
-            <p class="absolute bg-slate-900 text-white px-2 rounded bottom-2 right-2">3hrs 56 min ago</p>
+            
         </div>
         <div class="flex gap-3 mt-5 justify-start">
             <div class="flex gap-3">
