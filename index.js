@@ -1,4 +1,7 @@
-const loadTabs = async () => {
+const tabIds = [];
+let activeTabNow = "";
+let sbv = false;
+const loadTabs = async (callback) => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
   );
@@ -7,20 +10,36 @@ const loadTabs = async () => {
 
   for (const i of data) {
     // console.log(i);
+    tabIds.push(`${i.category_id}`);
     document.getElementById(
       "tabs"
     ).innerHTML += `<a id="${i.category_id}" onclick="catagoryClicked('${i.category_id}')" class="tab  bg-gray-300 hover:bg-red-500 hover:text-white font-semibold px-5 rounded-[4px] text-base">${i.category}</a>`;
   }
+  callback("1000");
 };
-const loadCards = async (id) => {
+const loadCards = async (id, sbv) => {
+  sbv = this.sbv;
   document.getElementById("cardsContainer").innerHTML = "";
   document.getElementById("noCards").innerHTML = "";
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   const json = await res.json();
-  const data = json.data;
-  console.log(data);
+  let data = json.data;
+  // console.log(data);
+  if (sbv) {
+    data = data.sort((a, b) => {
+      const n1 = parseFloat(a.others.views);
+      const n2 = parseFloat(b.others.views);
+      if (n1 < n2) {
+        return 1;
+      } else if (n2 < n1) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  }
   if (data.length === 0) {
     document.getElementById("noCards").innerHTML = `
     <div class="flex flex-col justify-center items-center mt-10 md:mt-48">
@@ -93,9 +112,35 @@ const loadCards = async (id) => {
       `;
   }
 };
+
+const sortClicked = () => {
+  // console.log("Sasas");
+  if (!sbv) {
+    document.getElementById("srtbnt").classList.add("bg-red-600");
+    document.getElementById("srtbnt").classList.add("text-white");
+    sbv = !sbv;
+  } else {
+    document.getElementById("srtbnt").classList.remove("bg-red-600");
+    document.getElementById("srtbnt").classList.remove("text-white");
+    sbv = !sbv;
+  }
+  this.sbv = sbv;
+  loadCards(activeTabNow, sbv);
+};
+const tabActive = (id) => {
+  for (i of tabIds) {
+    document.getElementById(i).classList.remove("bg-red-600");
+    document.getElementById(i).classList.remove("text-white");
+  }
+  document.getElementById(id).classList.add("bg-red-600");
+  document.getElementById(id).classList.add("text-white");
+};
+
 const catagoryClicked = (id) => {
   // console.log(id);
+  activeTabNow = id;
   loadCards(id);
+  tabActive(id);
+  // console.log(activeTabNow);
 };
-loadTabs();
-loadCards("1000");
+loadTabs(catagoryClicked);
