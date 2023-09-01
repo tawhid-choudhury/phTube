@@ -20,6 +20,10 @@ const loadCards = async (id) => {
   const json = await res.json();
   const data = json.data;
   for (const i of data) {
+    let v = "hidden";
+    if (i.authors[0].verified) {
+      v = "";
+    }
     console.log(i.authors[0]);
     document.getElementById("cardsContainer").innerHTML += `
     <div><!-- card -->
@@ -43,8 +47,10 @@ const loadCards = async (id) => {
                         <h4 class="py-2">
                         ${i.authors[0].profile_name}</h4>
                         <h4 class="text-blue-500 ml-3 text-xl relative">
+                          <div class=${v}>
                             <i class="fa-solid fa-certificate"></i>
-                            <i class="fa-solid fa-check absolute text-[10px] text-white top-[11px] right-[6px]"></i>
+                            <i class="fa-solid fa-check absolute text-[8px] text-white top-[11px] right-[7px]"></i>
+                          </div>
                         </h4>
                     </div>
                     <h4 class="">
@@ -62,3 +68,4 @@ const catagoryClicked = (id) => {
   loadCards(id);
 };
 loadTabs();
+loadCards("1000");
