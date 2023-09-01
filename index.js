@@ -14,11 +14,22 @@ const loadTabs = async () => {
 };
 const loadCards = async (id) => {
   document.getElementById("cardsContainer").innerHTML = "";
+  document.getElementById("noCards").innerHTML = "";
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   const json = await res.json();
   const data = json.data;
+  console.log(data);
+  if (data.length === 0) {
+    document.getElementById("noCards").innerHTML = `
+    <div class="flex flex-col justify-center items-center mt-10 md:mt-48">
+    <img src="./Icon.png" alt="">
+    <h1 class="text-3xl text-center font-bold mt-8">Oops!! Sorry, There is no<br>content here</h1>
+</div>
+    `;
+    return;
+  }
   for (const i of data) {
     let v = "hidden";
     let t = "hidden";
@@ -36,7 +47,7 @@ const loadCards = async (id) => {
 
       time = hours + " hrs " + minutes + " min ago";
     }
-    console.log(i.authors[0]);
+    // console.log(i.authors[0]);
     document.getElementById("cardsContainer").innerHTML += `
     <div class="flex flex-col max-w-[312px] m-auto"><!-- card -->
         <div class="flex justify-center items-center ">
@@ -83,7 +94,7 @@ const loadCards = async (id) => {
   }
 };
 const catagoryClicked = (id) => {
-  console.log(id);
+  // console.log(id);
   loadCards(id);
 };
 loadTabs();
