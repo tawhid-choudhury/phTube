@@ -27,7 +27,7 @@
             function scoped. Whereas, let and const were added to JS in the version ES6. These two are block Scoped.
             <br>
             <br>
-            <span class="font-bold">var :</span> Before let and const, var was the only way to declare function. It is
+            <span class="font-bold">var:</span> Before let and const, var was the only way to declare function. It is
             function scoped. Meaning it is accessible within the entire function that it was declared in. It is also
             hoisted. Meaning it can be accessed inside any scope of the function regardless of scope being before or
             after the declaration line. However, assigned value will be available after the assignment is completed.
@@ -36,11 +36,11 @@
         </p>
         <div class="flex flex-col items-center justify-center">
             <p>var example:</p>
-            <img src="./blogImages/varExample.png" alt="example">
+            <img src="./blogImages/varExample.png" alt="example" class="rounded-lg">
         </div>
         <p><br>
             <br>
-            <span class="font-bold">let and const : </span> let and const both were introduced in ES6. both of them are
+            <span class="font-bold">let and const: </span> let and const both were introduced in ES6. both of them are
             block scoped. Meaning they are only available in the block they were declared in (e.g. if-block, for-block).
             the difference between let and const is that const is not re-assignable, whilst let can be re-assigned. they
             are also not hoisted.
@@ -48,13 +48,119 @@
         <div class="flex flex-col lg:flex-row gap-10 items-center justify-center my-5">
             <div>
                 <p>let example:</p>
-                <img src="./blogImages/letExample.png" alt="example">
+                <img src="./blogImages/letExample.png" alt="example" class="rounded-lg">
             </div>
             <div>
                 <p>const example:</p>
-                <img src="./blogImages/constExample.png" alt="example">
+                <img src="./blogImages/constExample.png" alt="example" class="rounded-lg">
             </div>
         </div>
+        <h3 class="text-xl font-bold mt-10">2. Tell us the use cases of null and undefined</h3>
+        <p>
+            <br>
+            Upon first look, both null and undefined seem like the same thing, but they have some key difference in
+            terms of use cases.
+            here are some of them.
+        </p>
+
+
+        <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
+
+            <div class="border-2 p-2 rounded-lg">
+                <h1 class="text-lg font-bold">
+                    Undefined
+                </h1>
+
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">1. Implicit default value:</span> when a variable is declared but not
+                    assigned, it is, by default assigned as undefined.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/undifined1.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">2. Data type:</span> The datatype of undefined is undefined.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/undifined2.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">3. Arithmetic operations:</span> You cannot do arithmetic operations with
+                    undefined. It will return NaN.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/undifined3.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="border-2 p-2 rounded-lg">
+                <h1 class="text-lg font-bold">
+                    Null
+                </h1>
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">1. Explicit Absence of value:</span> null can be assigned to any variable to
+                    indicate that it does not hold any value.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/null1.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">2. Data type:</span> Null is by definition an object.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/null2.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+                <div class="mt-3 h-[350px]">
+                    <span class="font-bold">3. Arithmetic operations:</span> In arithmetic operations null is
+                    converted to 0.
+                    <div class="flex flex-col items-center justify-center">
+                        <p>example:</p>
+                        <img src="./blogImages/null3.png" alt="example" class="rounded-lg">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="mt-10">In addition to the difference there are some similar use cases for the two types.</p>
+        <div class="border-2 p-2 rounded-lg max-w-[620px] m-auto mt-5">
+            <div class="mt-5 text-center">
+                <p> <span class="font-bold">1. Falsy Value: </span>
+                    Both null and undefined are Falsy values.
+                </p>
+                <div class="flex flex-col items-center justify-center">
+                    <p>example:</p>
+                    <img src="./blogImages/unb1.png" alt="example" class="rounded-lg">
+                </div>
+            </div>
+            <div class="mt-5 text-center">
+                <p> <span class="font-bold">2. == and ===: </span>
+                    null is double equal to undefined, but not triple equal.
+                </p>
+                <div class="flex flex-col items-center justify-center">
+                    <p>example:</p>
+                    <img src="./blogImages/unb2.png" alt="example" class="rounded-lg">
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold mt-10">3. What do you mean by REST API?</h3>
+        <p>
+            <br>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe quis nulla tenetur sapiente vel doloribus
+            veniam, perspiciatis vero molestiae et provident illo corporis aliquam deleniti nemo similique voluptates
+            maiores nam.
+        </p>
+
 
 
 
